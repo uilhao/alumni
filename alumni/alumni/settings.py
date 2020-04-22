@@ -45,6 +45,18 @@ INSTALLED_APPS = [
     'menus',
     'treebeard',
     'sekizai',
+    'filer',
+    'easy_thumbnails',
+    'mptt',
+    'djangocms_text_ckeditor',
+    'djangocms_link',
+    'djangocms_file',
+    'djangocms_picture',
+    'djangocms_video',
+    'djangocms_googlemap',
+    # 'djangocms_snippet',
+    'djangocms_style',
+    # 'djangocms_column',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +100,15 @@ CMS_TEMPLATES = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
 
 WSGI_APPLICATION = 'alumni.wsgi.application'
 
