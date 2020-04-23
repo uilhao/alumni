@@ -73,7 +73,6 @@ celerybeat-schedule
 
 # virtualenv
 .venv
-env
 venv/
 ENV/
 
@@ -92,3 +91,5 @@ ENV/
 
 .vscode
 .DS_Store
+cache
+CACHE
