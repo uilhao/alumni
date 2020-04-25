@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block header %}
+<div class="page-header" id="banner">
+    <div class="row">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>{{ page.title }}</h1>
+            <p class="lead">{{ page.seo_title }}</p>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+        
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{{ self.body|richtext }}
+
+{% endblock content %}

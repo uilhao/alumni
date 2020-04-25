@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">AlumniShip</a>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        {% for menu in menuitems %}
+			<li class="nav-item">
+			<a href="{{menu.url}}" class="nav-link">{{menu.title}}</a>
+			</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
