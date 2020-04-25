@@ -10,20 +10,16 @@ class HomePage(Page):
     """ Main Class """
 
     # Database fields
-
     body = RichTextField(blank=True, null=True)
-    # date = models.DateField(name="Post date",blank=True, null=True)
 
-    template = "home/home_page.html"
-
-    # banner_title = models.CharField(max_length=100, blank=True, null=True)
-
-     # Editor panels configuration
-
+    # Editor panels configuration
     content_panels = Page.content_panels + [
         # FieldPanel('date'),
         FieldPanel('body', classname="full"),
     ]
+
+    # Template
+    template = "home/home_page.html"
 
 
     def get_context(self, request, *args, **kwargs):
@@ -36,6 +32,5 @@ class HomePage(Page):
 
 
     class Meta:
-
         verbose_name = "AlumniShip"
         verbose_name_plural = "AlumniShips"
