@@ -30,15 +30,26 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <a name="top"></a>
         {% wagtailuserbar %}
         
         {% include 'home/includes/menu.html' %}
 
-        <div class="container">
+        <div class="container content-wrapper">
             {% block header %}{% endblock %}
             
             {% block content %}{% endblock %}
         </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <p>Copyright 2020</p>
+                <p>
+                  <a href="#top">Back to top</a>
+                </p>
+            </div>
+        </footer>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/alumni.js' %}"></script>
@@ -47,4 +58,5 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
+    
 </html>

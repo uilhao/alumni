@@ -3,3 +3,7 @@
 @import "variables";
 @import "./bootstrap/bootstrap";
 @import "bootswatch";
+
+// theme specific
+@import "content";
+@import "footer";
