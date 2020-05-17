@@ -1,3 +1,12 @@
 .content-wrapper {
   padding: $vertical-space;
 }
+
+.vertical-unit {
+	padding-top: $vertical-unit-spacing;
+	padding-bottom: $vertical-unit-spacing;
+}
+
+.divider {
+	border-bottom: 1px solid $gray-500;
+}

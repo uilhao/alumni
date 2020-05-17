@@ -6,14 +6,18 @@ from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
+
 class HomePage(Page):
     """ Main Class """
+
+    max_count = 1
 
     # Database fields
     body = RichTextField(blank=True, null=True)
     banner_title = models.CharField(max_length=100, blank=True, null=True)
-    banner_subtitle = RichTextField(features=["bold", "italic"], blank=True, null=True)
-
+    banner_subtitle = RichTextField(
+        features=["bold", "italic"], blank=True, null=True
+    )
 
     # Relationships
     banner_image = models.ForeignKey(
@@ -34,7 +38,6 @@ class HomePage(Page):
         related_name="+",
     )
 
-
     # Editor panels configuration
     content_panels = Page.content_panels + [
         # FieldPanel('date'),
@@ -48,7 +51,6 @@ class HomePage(Page):
     # Template
     template = "home/home_page.html"
 
-
     def get_context(self, request, *args, **kwargs):
         context = super(HomePage, self).get_context(request, *args, **kwargs)
 
@@ -56,7 +58,6 @@ class HomePage(Page):
         # .filter(live=True, show_in_menus=True)
 
         return context
-
 
     class Meta:
         verbose_name = "Home Page"
