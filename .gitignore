@@ -70,3 +70,4 @@ ENV/
 .DS_Store
 cache
 CACHE
+*.zip

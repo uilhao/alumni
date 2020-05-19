@@ -14,38 +14,11 @@ class HomePage(Page):
 
     # Database fields
     body = RichTextField(blank=True, null=True)
-    banner_title = models.CharField(max_length=100, blank=True, null=True)
-    banner_subtitle = RichTextField(
-        features=["bold", "italic"], blank=True, null=True
-    )
-
-    # Relationships
-    banner_image = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        # no special, just use field name
-        related_name="+",
-    )
-
-    banner_call_to_action = models.ForeignKey(
-        "wagtailcore.Page",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        # no special, just use field name
-        related_name="+",
-    )
 
     # Editor panels configuration
     content_panels = Page.content_panels + [
         # FieldPanel('date'),
-        FieldPanel('banner_title'),
-        FieldPanel('banner_subtitle'),
         FieldPanel('body', classname="full"),
-        ImageChooserPanel("banner_image"),
-        PageChooserPanel("banner_call_to_action"),
     ]
 
     # Template

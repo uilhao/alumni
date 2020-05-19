@@ -1,0 +1,23 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+
+<div class="card-listing-hoz">
+
+  {% for institution in institutions %}
+  <div class="card">
+    <div class="row ">
+      <div class="col-md-4">
+        {% image institution.profile_image fill-200x150 as img %}
+        <img src="{{ img.url }}" class="card-img" alt="{{ img.alt }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title">{{ institution.title }}</h3>
+          <p class="card-text">{{ institution.intro|richtext }}</p>
+          <a href="#" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>

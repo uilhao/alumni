@@ -7,7 +7,32 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 
-class InstitutionsPage(Page):
+class InstitutionListingPage(Page):
+    """ Listing page """
+
+    custom_title = models.CharField(
+        max_length=100, null=False,
+        blank=False,
+        help_text='Title overwrite'
+    )
+
+    intro = RichTextField(blank=True, null=True)
+
+    # Editor panels configuration
+    content_panels = Page.content_panels + [
+        FieldPanel('custom_title'),
+        FieldPanel('intro'),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        """ Custom """
+        context = super().get_context(request, *args, **kwargs)
+        context["institutions"] = InstitutionPage.objects.live().public()
+
+        return context
+
+
+class InstitutionPage(Page):
     """ Main Class """
 
     # Possible fields:
@@ -44,7 +69,6 @@ class InstitutionsPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        # no special, just use field name
         related_name="+",
     )
 
@@ -57,7 +81,7 @@ class InstitutionsPage(Page):
             FieldPanel('accreditation_status'),
             FieldPanel('avg_gpa'),
             FieldPanel('sat_scores_average'),
-        ]),
+        ], heading="Instituion Details"),
         FieldPanel('intro'),
         FieldPanel('about'),
         ImageChooserPanel("profile_image"),

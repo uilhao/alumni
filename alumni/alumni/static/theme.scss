@@ -1,4 +1,4 @@
-// Main 
+// Main
 
 @import "variables";
 @import "./bootstrap/bootstrap";
@@ -6,4 +6,6 @@
 
 // theme specific
 @import "content";
+@import "cards";
+@import "sidebar";
 @import "footer";

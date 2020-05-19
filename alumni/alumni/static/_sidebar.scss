@@ -1,0 +1,8 @@
+.sidebar {
+  margin-top: 17px;
+  background-color: $gray-100;
+  height: 90%;
+  padding: 10px;
+  border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+}
