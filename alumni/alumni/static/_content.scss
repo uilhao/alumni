@@ -1,12 +1,18 @@
-.content-wrapper {
-  padding: $vertical-space;
-}
-
+.content-wrapper,
 .vertical-unit {
-	padding-top: $vertical-unit-spacing;
-	padding-bottom: $vertical-unit-spacing;
+  padding-top: $vertical-unit-spacing;
+  padding-bottom: $vertical-unit-spacing;
 }
 
 .divider {
-	border-bottom: 1px solid $gray-500;
+  border-bottom: 1px solid $gray-300;
+}
+
+.text,
+.rich-text {
+  padding: 3px 5px;
+}
+
+.label {
+  font-weight: $font-weight-bold;
 }

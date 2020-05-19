@@ -1,30 +1,65 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-homepage{% endblock %}
-
-{% block extra_css %}{% endblock %}
+{% block body_class %}template-institution-page{% endblock %}
 
 {% block header %}
-<div class="page-header" id="banner">
-    <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>{{ page.title }}</h1>
-            <p class="lead">{{ page.seo_title }}</p>
+    {% include 'includes/breadcrumb.html' %}
+
+    <div class="page-header mt-5 row">
+        <div class="col-sm-3">
+            {% image page.profile_image fill-200x200 as img %}
+            <img src="{{ img.url }}" class="card-img" alt="{{ img.alt }}" />
         </div>
-        <div class="col-lg-4 col-md-5 col-sm-6">
-        
+        <div class="col-sm-9">
+            <h1>{{ page.title }}</h1>
+            <p class="lead">{{ page.name }}</p>
+            <div class="intro mb-4">
+                {{ page.intro|richtext }}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-    
-    {% for block in page.content %}
-        {% include_block block %}
-    {% endfor %}
+    <hr class="vertical-unit" />
+    <div class="row">
+        <div class="col-sm-7">
+            <h3 class="">About {{ page.title }}</h3>
+            <div class="text">
+                {{ page.about|richtext }}
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="stats">
+                <h3>Statistics</h3>
+                <span class="label">Average GPA:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="label">Highest SAT Score:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 96%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="label">Lowest STAT Score:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="label">Admission Rate:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 85%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="info mt-5">
+                <h3>Campus Information</h3>
+                <p><span class="label">Address:</span> {{ page.address }} <br/>
+                <span class="label">Phone:</span> {{ page.phone }} <br/>
+                <span class="label">Accreditation Status:</span> {{ page.accreditation_status }}</p>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock content %}

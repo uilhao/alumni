@@ -59,9 +59,7 @@ class InstitutionPage(Page):
     about = RichTextField(blank=True, null=True)
 
     avg_gpa = models.FloatField(max_length=10, blank=True, null=True)
-    sat_scores_average = models.FloatField(
-        max_length=10, blank=True, null=True
-    )
+    sat_scores_average = models.IntegerField(blank=True, null=True)
 
     # Relationships
     profile_image = models.ForeignKey(

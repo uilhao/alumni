@@ -1,37 +1,33 @@
 {% extends "base.html" %}
 
-
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-listing{% endblock %}
+{% block body_class %}template-institution-listing{% endblock %}
 
 {% block header %}
-<div class="page-header" id="banner">
-    <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>{{ page.title }}</h1>
-            <p class="lead">{{ page.seo_title }}</p>
-        </div>
-        <div class="col-lg-4 col-md-5 col-sm-6">
-        
-        </div>
+    {% include 'includes/breadcrumb.html' %}
+
+    <div class="page-header">
+        <h1>{{ page.title }}</h1>
+        <p class="lead">{{ page.seo_title }}</p>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-
-    {{ page.intro|richtext }}
+    <div class="intro mb-4">
+        {{ page.intro|richtext }}
+    </div>
     
     <div class="row">
-        <div class="col-md-3 col-lg-2">
-            <h5>Navigation</h5>
-            <div class="sidebar">
-                <p>Options:</p>
-            </div>
+        <div class="col-md-3 col-lg-3">
+            {% include 'includes/sidebar.html' %}   
         </div>
-        <div class="col-md-9 col-lg-10">
+        <div class="col-md-9 col-lg-9">
+            {% include 'includes/top_bar.html' %}
+
             {% include 'includes/horizontal_card.html' %}
+
+            {% include 'includes/pagination.html' %}
         </div>
     </div>
 
