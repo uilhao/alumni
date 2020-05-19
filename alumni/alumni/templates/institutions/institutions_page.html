@@ -62,4 +62,18 @@
         </div>
     </div>
 
+    {% if page.gallery_images.all|length %}
+    <div class="image-gallery vertical-unit">
+        <h3>Gallery</h3>
+        <div class="row ">
+        {% for loop_cycle in page.gallery_images.all %}
+            {% image loop_cycle.gallery_image fill-400x250 as img %}
+            <div class="col-md-4 gallery-item{% if forloop.counter == 1 %} active{% endif %}">
+                <img src="{{ img.url }}" class="d-block w-100 mt-4" alt="{{ img.alt }}">
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
 {% endblock content %}

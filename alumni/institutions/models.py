@@ -1,10 +1,32 @@
 from django.db import models
 
-from wagtail.core.models import Page
+from modelcluster.fields import ParentalKey
+
+from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+
+
+class InstitutionImageGallery(Orderable):
+    """ Image Gallery """
+
+    page = ParentalKey("institutions.InstitutionPage",
+                       related_name="gallery_images"
+                       )
+
+    gallery_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels = [
+        ImageChooserPanel("gallery_image")
+    ]
 
 
 class InstitutionListingPage(Page):
@@ -79,10 +101,13 @@ class InstitutionPage(Page):
             FieldPanel('accreditation_status'),
             FieldPanel('avg_gpa'),
             FieldPanel('sat_scores_average'),
+            ImageChooserPanel("profile_image"),
         ], heading="Instituion Details"),
         FieldPanel('intro'),
         FieldPanel('about'),
-        ImageChooserPanel("profile_image"),
+        MultiFieldPanel([
+            InlinePanel('gallery_images', max_num=8, min_num=0, label="Image"),
+        ], heading="Image Gallery"),
     ]
 
     # Template
