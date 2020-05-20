@@ -13,6 +13,7 @@ from wagtail.search import index
 # https://developer.linkedin.com/docs/rest-api
 
 # name, school, degree, major(s), years(start and graduating) career history(title, cities, years)
+# hidden form to submit about section of institution
 
 
 class InstitutionImageGallery(Orderable):
