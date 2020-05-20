@@ -83,6 +83,9 @@ class InstitutionPage(Page):
     avg_gpa = models.FloatField(max_length=10, blank=True, null=True)
     sat_scores_average = models.IntegerField(blank=True, null=True)
 
+    dapip_id = models.IntegerField(blank=True, null=True)
+    ope_id = models.IntegerField(blank=True, null=True)
+
     # Relationships
     profile_image = models.ForeignKey(
         "wagtailimages.Image",

@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'root',
     'streams',
     'institutions',
+    'django_extensions',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
