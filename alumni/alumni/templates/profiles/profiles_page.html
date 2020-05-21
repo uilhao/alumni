@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-institution-page{% endblock %}
+
+{% block header %}
+    {% include 'includes/breadcrumb.html' %}
+
+    <div class="page-header mt-5 row">
+        <div class="col-sm-3">
+            {% image page.profile_image fill-200x200 as img %}
+            <img src="{{ img.url }}" class="card-img" alt="{{ img.alt }}" />
+        </div>
+        <div class="col-sm-9">
+            <h1>{{ page.title }}</h1>
+            
+            <div class="intro mb-4">
+                {{ page.intro|richtext }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <hr class="vertical-unit" />
+    <div class="row">
+        <div class="col-sm-7">
+            <h3 class="">About</h3>
+            <div class="text">
+                {{ page.about|richtext }}
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="stats">
+                <h3>Degrees</h3>
+                {% if page.degrees.all|length %}
+                
+                    {% for loop_cycle in page.degrees.all %}
+                    <ol class="degrees list-unstyled">
+                        <li><span class="label">Institution Name: </span>{{ loop_cycle.institution_name }}</li>
+                        <li><span class="label">Degree: </span>{{ loop_cycle.degree }}</li>
+                        <li><span class="label">Majors: </span>{{ loop_cycle.majors }}</li>
+                        <li><span class="label">Year start: </span>{{ loop_cycle.year_start }}</li>
+                        <li><span class="label">Year graduated: </span>{{ loop_cycle.year_graduated }}</li>
+                    </ol>
+                    {% endfor %}
+                
+                {% endif %}
+            </div>
+
+            <div class="info mt-5">
+                <h3>Other Information</h3>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

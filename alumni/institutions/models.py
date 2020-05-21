@@ -9,13 +9,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 
-# TODO Added Alumni page type and look into getting more data from linkedin api
-# https://developer.linkedin.com/docs/rest-api
-
-# name, school, degree, major(s), years(start and graduating) career history(title, cities, years)
-# hidden form to submit about section of institution
-
-
 class InstitutionImageGallery(Orderable):
     """ Image Gallery """
 

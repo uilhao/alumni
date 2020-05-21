@@ -26,23 +26,20 @@
             {% include 'includes/top_bar.html' %}
 
             <div class="card-listing-hoz">
-                {% for institution in institutions %}
+                {% for profile in profiles %}
                 <div class="card">
                     <div class="row ">
                     <div class="col-md-4">
-                        {% image institution.profile_image fill-200x150 as img %}
+                        {% image profile.profile_image fill-200x150 as img %}
                         <img src="{{ img.url }}" class="card-img" alt="{{ img.alt }}"/>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <h3 class="card-title">{{ institution.title }}</h3>
-                        <div class="mb-1 text text-muted">
-                            <strong>Average GPA:</strong> {{ institution.avg_gpa }} <span class="px-2">|</span> <strong>Average SAT:</strong> {{ institution.sat_scores_average }} 
-                        </div>
+                        <h3 class="card-title">{{ profile.title }}</h3>
                         <div class="text mb-3">
-                        {{ institution.intro|striptags|truncatechars:240 }}
+                        {{ profile.intro|striptags|truncatechars:240 }}
                         </div>
-                        <a href="{{ institution.url }}" class="btn btn-primary">Visit Detail Page</a>
+                        <a href="{{ profile.url }}" class="btn btn-primary">Visit Profile Page</a>
                         </div>
                     </div>
                     </div>
