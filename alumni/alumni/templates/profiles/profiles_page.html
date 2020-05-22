@@ -50,7 +50,20 @@
             </div>
 
             <div class="info mt-5">
-                <h3>Other Information</h3>
+                <h3>Career History</h3>
+                {% if page.career_history.all|length %}
+                
+                    {% for loop_cycle in page.career_history.all %}
+                    <ol class="degrees list-unstyled">
+                        <li><span class="label">Company Name: </span>{{ loop_cycle.company_name }}</li>
+                        <li><span class="label">Position: </span>{{ loop_cycle.position }}</li>
+                        <li><span class="label">Majors: </span>{{ loop_cycle.majors }}</li>
+                        <li><span class="label">Year start: </span>{{ loop_cycle.year_start }}</li>
+                        <li><span class="label">Year Departed: </span>{{ loop_cycle.year_departed }}</li>
+                    </ol>
+                    {% endfor %}
+                
+                {% endif %}
             </div>
         </div>
     </div>

@@ -92,8 +92,8 @@ class ProfileDegrees(Orderable):
     institution_name = models.CharField(max_length=255, null=True, blank=True)
     degree = models.CharField(max_length=255, null=True, blank=True)
     majors = models.CharField(max_length=255, null=True, blank=True)
-    year_start = models.CharField(max_length=255, null=True, blank=True)
-    year_graduated = models.CharField(max_length=255, null=True, blank=True)
+    year_start = models.DateField(null=True, blank=True)
+    year_graduated = models.DateField(null=True, blank=True)
 
     panels = [
         FieldPanel('institution_name'),
@@ -110,8 +110,8 @@ class ProfileCareerHistory(Orderable):
     page = ParentalKey(ProfilePage, related_name='career_history')
     company_name = models.CharField(max_length=255, null=True, blank=True)
     position = models.CharField(max_length=255, null=True, blank=True)
-    year_start = models.CharField(max_length=255, null=True, blank=True)
-    year_departed = models.CharField(max_length=255, null=True, blank=True)
+    year_start = models.DateField(null=True, blank=True)
+    year_departed = models.DateField(null=True, blank=True)
 
     panels = [
         FieldPanel('company_name'),
