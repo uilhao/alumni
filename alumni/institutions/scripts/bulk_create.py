@@ -56,27 +56,31 @@ def run():
         {"name": "One", "title": "One", "avg_gpa": "3.5", "dapip_id": 12030},
         {"name": "One1", "title": "One1", "avg_gpa": "3.9", "dapip_id": 342343},
     ]
-    # bulk_mgr = BulkCreateManager(chunk_size=20)
+    bulk_mgr = BulkCreateManager(chunk_size=20)
     # rows = [
     #     models.InstitutionPage(title="mee", name="eem"),
     #     models.InstitutionPage(title="mee1", name="eem1"),
     #     models.InstitutionPage(title="mee2", name="eem2"),
     # ]
-    # for row in records:
-    #     bulk_mgr.add(models.InstitutionPage(
-    #         title=row['title'],
-    #         name=row['name'],
-    #     )
-    #     )
+    for row in records:
+        bulk_mgr.add(models.InstitutionListingPage(
+            title=row['title'],
+            intro=row['name'],
+        )
+        )
 
-    # bulk_mgr.done()
+    bulk_mgr.done()
 
-    models.InstitutionListingPage().objects.bulk_create([
-        models.InstitutionPage(title="mee", name="eem"),
-        models.InstitutionPage(title="mee1", name="eem1"),
-        models.InstitutionPage(title="mee2", name="eem2"),
-    ])
+    # models.InstitutionListingPage().objects.bulk_create([
+    #     models.InstitutionPage(title="mee", name="eem"),
+    #     models.InstitutionPage(title="mee1", name="eem1"),
+    #     models.InstitutionPage(title="mee2", name="eem2"),
+    # ])
     # page = models.InstitutionPage(title="mee", name="eem")
+
+    # models.InstitutionPage(title="mee", name="eem"),
+    # models.InstitutionPage(title="mee1", name="eem1"),
+    # models.InstitutionPage(title="mee2", name="eem2"),
 
     # print(apps.get_model("institution"))
 

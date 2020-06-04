@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'streams',
     'institutions',
     'profiles',
+    # 'wagtailimportexport',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

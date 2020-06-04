@@ -30,3 +30,5 @@ Run the Django app in debug mode and auto-load on save:
 ```bash
 python manage.py runserver
 ```
+
+python manage.py runscript bulk_create --dir-policy none
